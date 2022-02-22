@@ -1,0 +1,6 @@
+TILETOOLSAVE,0,Nick's House,0.125,5.0,0,120.0,120.0,in,null,6.0,6.0,in,null,1.99
+TILETOOLSAVE,1,Ben's house,0.125,5.0,0,120.0,120.0,in,null,6.0,6.0,in,null,1.99
+TILETOOLSAVE,2,Joe's house,0.125,5.0,0,120.0,120.0,in,null,6.0,6.0,in,null,1.99
+TILETOOLSAVE,3,Cat's house,0.125,5.0,0,120.0,120.0,in,null,6.0,6.0,in,null,1.99
+TILETOOLSAVE,4,Rat's house,0.125,5.0,0,120.0,120.0,in,null,6.0,6.0,in,null,1.99
+TILETOOLSAVE,6,test,0.0,0.0,-1,60.0,50.0,in,,0.0,0.0,in,,0.0
