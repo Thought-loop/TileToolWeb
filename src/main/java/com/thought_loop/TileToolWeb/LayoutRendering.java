@@ -330,20 +330,27 @@ public class LayoutRendering extends JPanel {
         return tiles;
     }
 
+
+    //creates a buffered image of the layout - either to be saved as jpg with generateJPEGFile()
+    //OR converted to byte stream and used as a web response
     public BufferedImage generateBufferedImage(int layoutType){
         //layoutType - (1 Square symmetrical, 2 Square cuts along origin axis, 3 subway symmetrical)
 
         //padding around layout inside of image
+        String layoutTypeName = "";
         int layoutMarginPX = 30;
         List<int []> coordinatesOfTilesToDraw;
         if(layoutType == 1) {
             coordinatesOfTilesToDraw = generateCoordinatesSquareLayoutSymmetrical(layoutMarginPX, layoutMarginPX);
+            layoutTypeName = "Symmetrical";
         }
         else if(layoutType == 2){
             coordinatesOfTilesToDraw = generateCoordinatesSquareLayoutNotSymmetrical(layoutMarginPX, layoutMarginPX);
+            layoutTypeName = "Asymmetrical";
         }
         else{
             coordinatesOfTilesToDraw = generateCoordinatesSubwayLayoutSymmetrical(layoutMarginPX, layoutMarginPX);
+            layoutTypeName = "Subway";
         }
         //list of int[] in form {xCurrent,yCurrent,xDelta,yDelta}
 
@@ -378,20 +385,22 @@ public class LayoutRendering extends JPanel {
         }
 
         //draw text at bottom: Project name, layout, tile, room key information.
+        //3 rows ot text below title are .55, .75, .925
         int textXOrigin = (int)(maxXLayout*.01);
         g2d.setPaint(Color.black);
         g2d.setFont(new Font("Arial", Font.PLAIN, maxXLayout/30));
         g2d.drawString(projectName, textXOrigin, (int)(maxYLayout + ((maxYImage-maxYLayout)*0.35)));
         g2d.setFont(new Font("Arial", Font.PLAIN, maxXLayout/50));
-        g2d.drawString(layout + "", textXOrigin, (int)(maxYLayout + ((maxYImage-maxYLayout)*0.55)));
-        g2d.drawString("Tile: " + layout.getTile(), textXOrigin, (int)(maxYLayout + ((maxYImage-maxYLayout)*0.75)));
-        g2d.drawString("Room: " + layout.getRoom(), textXOrigin, (int)(maxYLayout + ((maxYImage-maxYLayout)*0.925)));
-        //g2d.drawString(projectName, (int)(maxXLayout*.05), (int)(maxYLayout-(layout.getTile().getHeightInches()/2*pixelsPerInch)));
+        g2d.drawString(layoutTypeName + " pattern   " + layout, textXOrigin, (int)(maxYLayout + ((maxYImage-maxYLayout)*0.55)));
+        g2d.drawString("Tile: (" + layout.getTile() + ")   Room: (" + layout.getRoom() + ")", textXOrigin, (int)(maxYLayout + ((maxYImage-maxYLayout)*0.75)));
+        g2d.drawString("Tile required: (" + layout.getSqftTileNeeded() + "sqft)   **includes " +layout.getPercentOverage()+ "% overage**", textXOrigin, (int)(maxYLayout + ((maxYImage-maxYLayout)*0.925)));
+
 
 
         return bufferedImage;
     }
 
+    //creates timestamped jpg from buffered image
     public String generateJPGFile(int layoutType){
         BufferedImage bi = generateBufferedImage(layoutType);
         LocalDateTime now = LocalDateTime.now();

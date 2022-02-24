@@ -154,8 +154,8 @@ public class Layout {
 
     @Override
     public String toString() {
-        return "Tile spacing: " + Spacers.stdInchSpacers(tileSpacingInches) +
-                " , Perimeter expansion gap: " + Spacers.stdInchSpacers(perimeterExpansionGapInches);
+        return "Tile spacing: (" + Spacers.stdInchSpacers(tileSpacingInches) +
+                ")    Wall expansion gap: (" + Spacers.stdInchSpacers(perimeterExpansionGapInches) + ")";
     }
 
     public String getDataFormatted(){

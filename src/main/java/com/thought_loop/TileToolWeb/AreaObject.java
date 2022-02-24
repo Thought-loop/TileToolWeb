@@ -146,7 +146,7 @@ public abstract class AreaObject {
 
     @Override
     public String toString() {
-        return getHeightInches() + " in. height (y-axis) by " + getWidthInches() + " in. width (x-axis)";
+        return getHeightInches() + " in. by " + getWidthInches() + " in.";
     }
 }
 

@@ -35,7 +35,7 @@ public class WebLayout extends Layout{
             tile = new Tile(Double.parseDouble(tileY), Double.parseDouble(tileX));
             this.name = name;
         }
-        setParameters(Double.parseDouble(spacing), Double.parseDouble(exGap),0);
+        setParameters(Double.parseDouble(spacing), Double.parseDouble(exGap),15);
         setRoom(room);
         setTile(tile);
     }
