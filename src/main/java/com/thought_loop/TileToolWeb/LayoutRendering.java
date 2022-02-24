@@ -41,6 +41,21 @@ public class LayoutRendering extends JPanel {
 
     }
 
+    public LayoutRendering(WebLayout webLayout){
+        this.layout = webLayout;
+        this.room = webLayout.getRoom();
+        this.tile = webLayout.getTile();
+        this.marginIN = 5;
+        this.pixelsPerInch = 32;
+        this.marginPixels = marginIN*pixelsPerInch;
+        this.spacing = webLayout.getTileSpacingInches()*pixelsPerInch;
+        this.projectName = webLayout.getName();
+        roomCorners = new int[]
+                {(int)((room.getWidthInches()*pixelsPerInch)+.5)
+                        ,(int)((room.getHeightInches()*pixelsPerInch)+.5)};
+
+    }
+
     public int[] getWindowSize() {
         //returns window size in pixels {width,height}
         return new int[] {(int)(roomCorners[0]),(int)(roomCorners[1])};
@@ -315,11 +330,7 @@ public class LayoutRendering extends JPanel {
         return tiles;
     }
 
-
-
-
-
-    public String generateJPG(int layoutType){
+    public BufferedImage generateBufferedImage(int layoutType){
         //layoutType - (1 Square symmetrical, 2 Square cuts along origin axis, 3 subway symmetrical)
 
         //padding around layout inside of image
@@ -378,6 +389,11 @@ public class LayoutRendering extends JPanel {
         //g2d.drawString(projectName, (int)(maxXLayout*.05), (int)(maxYLayout-(layout.getTile().getHeightInches()/2*pixelsPerInch)));
 
 
+        return bufferedImage;
+    }
+
+    public String generateJPGFile(int layoutType){
+        BufferedImage bi = generateBufferedImage(layoutType);
         LocalDateTime now = LocalDateTime.now();
         String fileName = now.toString();
         fileName = fileName.replace(":","-");
@@ -385,13 +401,15 @@ public class LayoutRendering extends JPanel {
         fileName = "GeneratedImages\\"+ fileName +".jpg";
         File file = new File(fileName);
         try {
-            ImageIO.write(bufferedImage, "jpg", file);
+            ImageIO.write(bi, "jpg", file);
             System.out.println("Successfully generated image file: " + fileName);
         } catch (IOException e) {
             System.out.println("There was an error generating the image file");
         }
         return fileName;
     }
+
+
 
 
 

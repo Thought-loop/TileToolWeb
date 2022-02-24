@@ -370,7 +370,7 @@ public class TextMenu {
             currentUserInput = scanner.nextLine();
             currentUserInputAsInteger = Integer.parseInt(currentUserInput);
             LayoutRendering layoutRendering = new LayoutRendering(currentProject.getLayout(), 32, 5, currentProject.getProjectName());
-            String newJpgFilename = layoutRendering.generateJPG(currentUserInputAsInteger);
+            String newJpgFilename = layoutRendering.generateJPGFile(currentUserInputAsInteger);
             File newJpgFile = new File(newJpgFilename);
             try {
                 Desktop.getDesktop().open(newJpgFile);

@@ -1,104 +1,205 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <style>
-   main{
-  text-align: center;
-  font-family: Arial;
-}
 
-h3{
-  color: gray;
-}
+    <style>
+        /* 
+        #F7F7F7 nice light gray
+        #7DA2A9 baby blue
+        */
+        main {
+            text-align: center;
+            font-weight: bold;
+            font-family: "Open Sans";
+            background-color: #023047;
+        }
 
-h4{
-  color: red;
-}
+        #title-block {
+            background-color: #538B9C;
+            padding: 1em;
+        }
 
-#image{
-  max-width: 100%;
-  display: block;
-  height: auto;
-  margin: auto;
-}
+        h1 {
+            margin: 0px;
+        }
 
-#img-caption{
-  font-style: italic;
-  margin: 0 auto 50px auto;
-}
+        h3 {
+            color: #BCD8E3;
+            margin: 0px;
+        }
 
-#tribute-info{
+        h4 {
+            color: red;
+        }
 
-  max-width: 60%;
-  margin: auto auto 50px auto;
-  font-size: 140%;
-}
+        #input-form {
+            max-width: 100%;
 
-#background-info{
-  text-align:left;
-}
+            font-size: 140%;
+            padding-bottom: 5%;
+        }
 
-#citation{
-  font-size: 66%;
-}
-
-#tribute-info-uses{
-  text-align:left;
-  list-style:outside;
-   display: flex;
-  flex-wrap: wrap;
-}
+        li {
+            height: 100vh;
+            flex-grow: 1;
+        }
 
 
-li{
-  height: 100vh;
-  flex-grow: 1;
-}
+        fieldset {
 
-.list-img{
-  max-height: 100%;
-  min-width: 100%;
-  object-fit: cover;
-  vertical-align: bottom;
-}
+            border: 1px solid #888;
+            border-right: 1px solid #666;
+            border-bottom: 1px solid #666;
+        }
 
-#tribute-link{
-  margin-top: 500px;
-}
+        legend {
+            font-weight: bold;
+            border: 1px solid #888;
+            border-right: 1px solid #666;
+            border-bottom: 1px solid #666;
+            border-radius: 0px;
+            padding: .3em;
+            background-color: #219ebc
+        }
 
-</style>
+        /* fieldset input text box titles */
+        label {
+            color: #7DA2A9;
+            margin: 2em;
+
+        }
+
+        fieldset {
+            display: inline;
+            border-radius: 10px;
+            border: 0.10em solid #FB8500;
+
+            max-width: 75%;
+
+
+        }
+
+        select {
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .layout-dropdown {
+            display: inline-block;
+
+        }
+
+        input[type=submit] {
+            margin-top: 0.5em;
+            height: auto;
+            font-size: 1.5em;
+            font-weight: bold;
+            font-family: "Open Sans";
+            text-transform: uppercase;
+            color: #696666;
+            background: transparent;
+            padding: .5em;
+            /* background: url(https://i.imgur.com/Th606mh.png) no-repeat scroll 0.75em 0.07em transparent; */
+            background-size: 54px 204px;
+            border-radius: 2em;
+            border: 0.10em solid #FB8500;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+
+        input[type="submit"]:hover {
+            color: #fff;
+            background-color: #FB8500;
+            border-color: #FB8500;
+            background-position: 0.75em bottom;
+            -webkit-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:focus {
+            background-position: 2em -4em;
+            -webkit-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        /* Webfonts */
+
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+        }
+    </style>
 </head>
+
 <body>
-<main id="main">
-    <h1 id="title" >The 5 Gallon Bucket</h1>
-    <h3>EST 1967</h3>
-    <div id="img-div">
-        <img id="image" src="https://bascousa.com/pub/media/catalog/product/cache/5b6012621691da0f545c7ec04d93605b/5/-/5-gallon-pail-white-100.jpg">
-        <div id="img-caption">
-            A fine example of a modern 5 gallon bucket.
+    <main id="main">
+        <div id="title-block">
+            <h1 id="title">TileTool v0.1</h1>
+            <h3>**thought-loop**</h3>
+            <div id="img-div">
+            </div>
         </div>
-    </div>
 
 
+        <div id="input-form">
+            <h2 style="color:#ffb703">Enter your information</h2>
+            <form id="input-measurements" action="/measure_submit" method="POST">
+                <fieldset>
+                    <legend>Room Measurements (inches)</legend>
+                    <label>Width (x-axis): <input type="text" name="roomX"></label>
+                    </br>
+                    <label>Width (y-axis): <input type="text" name="roomY"></label>
+                </fieldset>
+                <fieldset>
+                    <legend>Tile Measurements (inches)</legend>
+                    <label>Width (x-axis): <input type="text" name="tileX"></label>
+                    </br>
+                    <label>Width (y-axis): <input type="text" name="tileY"></label>
+                </fieldset>
+                </br>
+                <fieldset class="layout-dropdown">
+                    <legend>Spacing between tiles</legend>
+                    <select id="selectNumber" name="spacing">
+                        <option value=".0625">1/16"</option>
+                        <option value=".125">1/8"</option>
+                        <option value=".1875">3/16"</option>
+                        <option value=".25">1/4"</option>
+                        <option value=".375">3/8"</option>
+                        <option value=".5">1/2"</option>
+                    </select>
+                </fieldset>
+                <fieldset class="layout-dropdown">
+                    <legend>Outer expansion gap</legend>
+                    <select id="selectNumber" name="exGap">
+                        <option value=".25">1/4"</option>
+                        <option value=".375">3/8"</option>
+                        <option value=".5">1/2"</option>
+                        <option value=".625">5/8"</option>
+                        <option value=".75">3/4"</option>
+                        <option value="1">1"</option>
+                    </select>
+                </fieldset>
+                <fieldset class="layout-dropdown">
+                    <legend>Tile Pattern</legend>
+                    <select id="selectNumber" name="patternType">
+                        <option value="1">Symmetrical</option>
+                        <option value="2">Asymmetrical</option>
+                        <option value="3">Subway horizontal (1/2 offset)</option>
+                    </select>
+                </fieldset>
+                </br>
+                <fieldset>
+                    <legend>Your Project Name</legend>
+                   <input type="text" name="name"></label>
+                </fieldset>
+                <div id="submit-button">
+                    <input type="submit" name="Submit" value="Generate Layout Image" />
+                </div>
+            </form>
 
-    <div id="tribute-info">
-        <h2>Background</h2>
-        <p id="background-info">"In 1967, William Roper, whose family owned a plastic-molding business in Los Angeles, revolutionized packaging with the first five-gallon plastic pail and lid.
-
-            Today, in nondescript industrial parks across North America-in places like Elk Grove Village, Ill., Edison, N.J., Valpariso, Ind., and Fullerton, Calif. U.S. and Canadian companies make an estimated 170 million five-gallon pails each year."
-            <cite id="citation"><a href="https://www.chicagotribune.com/news/ct-xpm-1994-10-16-9410160336-story.html" target="_blank">Arndt, M (1994, October 16). SAFETY PANEL POURS ITSELF INTO 5-GALLON BUCKET FUROR. Chicago Tribune.</a></cite>
-        </p>
-        <h2>Modern Uses</h2>
-        <ul id="tribute-info-uses" style="list-style-type:none">
-            <li><img class="list-img" src="https://www.makingmanzanita.com/wp-content/uploads/2021/06/how-to-mix-thinset-mortar-for-tile-with-power-drill.jpg"</li>
-            <li><img class="list-img" src="https://www.fleetfarm.com/images/product/0000000347609/x/2.jpg"</li>
-            <li><img class="list-img" src="https://www.foodstoragemoms.com/wp-content/uploads/2021/03/How-to-Garden-With-5-Gallon-Buckets-20-700x445.jpeg"</li>
-            <li><img class="list-img" src="http://freestonepickles.com/wp-content/uploads/2016/07/5-gal-pickles-291x300.jpg"</li>
-            <li><img class="list-img" src="https://external-preview.redd.it/Al3jExfWjdbqW-cf0Uc4fdyQFiLi92WTpI6REqBysG4.jpg?auto=webp&s=3528b893ee64e656bac7563aadc5c9a8e79ef90b"</li>
-            <li><img class="list-img" src="https://op1.0ps.us/original/opplanet-wise-outdoors-bucket-seat-360-brown-wd2200-246-main"</li>
-        </ul>
-
-        <h4>Unlock your own world of possibilities: purchase a pallet of 5 gallon buckets
-            <a id="tribute-link" href="https://www.homedepot.com/p/The-Home-Depot-5-gal-HD-Bucket-in-Orange-Pack-300-05GLHD2/312094810" target="_blank">here.</a>
-        </h4>
-</main>
+    </main>
