@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TileTool</title>
     <style>
         /* 
         #F7F7F7 nice light gray
         #7DA2A9 baby blue
         */
+        *
+        {
+
+        }
+
         main {
             text-align: center;
             font-weight: bold;
@@ -19,13 +23,8 @@
             padding: 1em;
         }
 
-        h1 {
-            margin: 0px;
-        }
-
         h3 {
             color: #BCD8E3;
-            margin: 0px;
         }
 
         h4 {
@@ -80,6 +79,7 @@
         }
 
         select {
+            font-style: italic;
             border-radius: 10px;
             width: 100%;
         }
@@ -139,15 +139,19 @@
     <main id="main">
         <div id="title-block">
             <h1 id="title">TileTool v0.1</h1>
-            <h3>**thought-loop**</h3>
+            <h3>EST 2022</h3>
             <div id="img-div">
+                <!--<img id="image" src="https://bascousa.com/pub/media/catalog/product/cache/5b6012621691da0f545c7ec04d93605b/5/-/5-gallon-pail-white-100.jpg">
+        <div id="img-caption">
+            A fine example of a modern 5 gallon bucket.
+        </div>-->
             </div>
         </div>
 
 
         <div id="input-form">
             <h2 style="color:#ffb703">Enter your information</h2>
-            <form id="input-measurements" action="/measure_submit" method="POST">
+            <form id="input-measurements" action="/measurements_submit" method="POST">
                 <fieldset>
                     <legend>Room Measurements (inches)</legend>
                     <label>Width (x-axis): <input type="text" name="roomX"></label>
@@ -183,21 +187,8 @@
                         <option value="1">1"</option>
                     </select>
                 </fieldset>
-                <fieldset class="layout-dropdown">
-                    <legend>Tile Pattern</legend>
-                    <select id="selectNumber" name="patternType">
-                        <option value="1">Symmetrical</option>
-                        <option value="2">Asymmetrical</option>
-                        <option value="3">Subway horizontal (1/2 offset)</option>
-                    </select>
-                </fieldset>
-                </br>
-                <fieldset>
-                    <legend>Your Project Name</legend>
-                   <input type="text" name="name"></label>
-                </fieldset>
                 <div id="submit-button">
-                    <input type="submit" name="Submit" value="Generate Layout Image" />
+                    <input type="submit" name="Submit" value="Submit Measurements" />
                 </div>
             </form>
 
