@@ -46,7 +46,7 @@ public class LayoutRendering extends JPanel {
         this.room = webLayout.getRoom();
         this.tile = webLayout.getTile();
         this.marginIN = 5;
-        this.pixelsPerInch = 32;
+        this.pixelsPerInch = 16;
         this.marginPixels = marginIN*pixelsPerInch;
         this.spacing = webLayout.getTileSpacingInches()*pixelsPerInch;
         this.projectName = webLayout.getName();
