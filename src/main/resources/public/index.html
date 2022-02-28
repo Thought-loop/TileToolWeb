@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/indexjs.js"></script>
     <title>TileTool</title>
     <style>
 
@@ -130,6 +132,16 @@
             transition: all 0.3s ease;
         }
 
+        #image-response{
+            padding: 2%;
+        }
+
+        #img-rendering{
+            max-width: 100%;
+            max-height: 100vh;
+            height: auto;
+        }
+
         /* Webfonts */
 
         @font-face {
@@ -153,18 +165,18 @@
 
         <div id="input-form">
             <h2 style="color:#ffb703">Enter your information</h2>
-            <form id="input-measurements" action="/measure_submit" method="POST">
+            <form id="input-measurements" action="/measure_submit" method="POST" onsubmit="send(event, this)">
                 <fieldset>
                     <legend>Room Measurements (inches)</legend>
-                    <label>Width (x-axis): <input type="text" name="roomX"></label>
+                    <label>Width (x-axis): <input type="text" name="roomX" value="72"></label>
                     </br>
-                    <label>Height (y-axis): <input type="text" name="roomY"></label>
+                    <label>Height (y-axis): <input type="text" name="roomY" value="72"></label>
                 </fieldset>
                 <fieldset>
                     <legend>Tile Measurements (inches)</legend>
-                    <label>Width (x-axis): <input type="text" name="tileX"></label>
+                    <label>Width (x-axis): <input type="text" name="tileX" value="12"></label>
                     </br>
-                    <label>Height (y-axis): <input type="text" name="tileY"></label>
+                    <label>Height (y-axis): <input type="text" name="tileY" value="12"></label>
                 </fieldset>
                 </br>
                 <fieldset class="layout-dropdown">
@@ -206,5 +218,8 @@
                     <input type="submit" name="Submit" value="Generate Layout Image" />
                 </div>
             </form>
+            <div id="image-response">
+                <img id="img-rendering" src="">
+            </div>
 
     </main>

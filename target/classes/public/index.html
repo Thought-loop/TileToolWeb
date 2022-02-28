@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/indexjs.js"></script>
+    <title>TileTool</title>
     <style>
-        /* 
-        #F7F7F7 nice light gray
-        #7DA2A9 baby blue
-        */
+
         main {
             text-align: center;
             font-weight: bold;
@@ -45,7 +43,6 @@
             flex-grow: 1;
         }
 
-
         fieldset {
 
             border: 1px solid #888;
@@ -60,34 +57,45 @@
             border-bottom: 1px solid #666;
             border-radius: 0px;
             padding: .3em;
-            background-color: #219ebc
+            background-color: #219ebc;
         }
 
         /* fieldset input text box titles */
         label {
             color: #7DA2A9;
             margin: 2em;
-
         }
 
         fieldset {
             display: inline;
             border-radius: 10px;
             border: 0.10em solid #FB8500;
-
             max-width: 75%;
-
-
         }
 
         select {
+            background-color: rgba(37, 70, 87);
+            color: whitesmoke; 
             border-radius: 10px;
             width: 100%;
+            font-size: .75em;
+            padding: 1%;
         }
+         select option{
+            background-color: rgba(37, 70, 87);
+         }
 
         .layout-dropdown {
             display: inline-block;
+        }
 
+        input[type=text]{
+            /* width: 10%; */
+            font-size: .75em;
+            font-weight: bold;
+            text-align: center;
+            background-color: rgba(37, 70, 87);
+            color: whitesmoke; 
         }
 
         input[type=submit] {
@@ -100,7 +108,6 @@
             color: #696666;
             background: transparent;
             padding: .5em;
-            /* background: url(https://i.imgur.com/Th606mh.png) no-repeat scroll 0.75em 0.07em transparent; */
             background-size: 54px 204px;
             border-radius: 2em;
             border: 0.10em solid #FB8500;
@@ -123,6 +130,15 @@
             -webkit-transition: all 0.3s ease;
             -ms-transition: all 0.3s ease;
             transition: all 0.3s ease;
+        }
+
+        #image-response{
+            padding: 10%;
+        }
+
+        #img-rendering{
+            max-width: 75%;
+            height: auto;
         }
 
         /* Webfonts */
@@ -148,18 +164,18 @@
 
         <div id="input-form">
             <h2 style="color:#ffb703">Enter your information</h2>
-            <form id="input-measurements" action="/measure_submit" method="POST">
+            <form id="input-measurements" action="/measure_submit" method="POST" onsubmit="send(event, this)">
                 <fieldset>
                     <legend>Room Measurements (inches)</legend>
                     <label>Width (x-axis): <input type="text" name="roomX"></label>
                     </br>
-                    <label>Width (y-axis): <input type="text" name="roomY"></label>
+                    <label>Height (y-axis): <input type="text" name="roomY"></label>
                 </fieldset>
                 <fieldset>
                     <legend>Tile Measurements (inches)</legend>
                     <label>Width (x-axis): <input type="text" name="tileX"></label>
                     </br>
-                    <label>Width (y-axis): <input type="text" name="tileY"></label>
+                    <label>Height (y-axis): <input type="text" name="tileY"></label>
                 </fieldset>
                 </br>
                 <fieldset class="layout-dropdown">
@@ -195,11 +211,14 @@
                 </br>
                 <fieldset>
                     <legend>Your Project Name</legend>
-                   <input type="text" name="name"></label>
+                   <input type="text" name="name" style="width:auto"></label>
                 </fieldset>
                 <div id="submit-button">
                     <input type="submit" name="Submit" value="Generate Layout Image" />
                 </div>
             </form>
+            <div id="image-response">
+                <img id="img-rendering" src="">
+            </div>
 
     </main>
