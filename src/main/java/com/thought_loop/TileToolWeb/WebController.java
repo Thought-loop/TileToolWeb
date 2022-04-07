@@ -15,18 +15,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 @RestController
-public class WebDirector {
+public class WebController {
     private Layout layout;
     private Room room;
     private Tile tile;
 
-    //MediaType.APPLICATION_JSON_VALUE
-    // MediaType.APPLICATION_FORM_URLENCODED_VALUE
-    //"application/json; charset=UTF-8"
-    @PostMapping(path ="/measure_submit", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.IMAGE_JPEG_VALUE)
+
+    @PostMapping(path = "/measure_submit", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
-    public byte[] generateImage(WebLayout webLayout){
-   //public String generateImage(WebLayout webLayout){
+    public byte[] generateImage(WebLayout webLayout) {
 
         LayoutRendering layoutRendering = new LayoutRendering(webLayout);
         BufferedImage layoutAsBufferedImage = layoutRendering.generateBufferedImage(Integer.parseInt(webLayout.getPatternType()));
@@ -34,9 +31,7 @@ public class WebDirector {
         try {
             ImageIO.write(layoutAsBufferedImage, "jpeg", outputStream);
             InputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
-            //System.out.println(IOUtils.toString(inputStream,"UTF-8"));
             return IOUtils.toByteArray(inputStream);
-            //return IOUtils.toString(inputStream,"UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
             return null;
